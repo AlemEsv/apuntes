@@ -6,23 +6,6 @@ Terraform es un herramienta que permite crear infraestructura como código.
 
 Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, azure, google cloud, etc)_ o de manera local, utilizando **terraform providers**.
 
-## Infraestructura
-
-Servicios y plataformas
-
-- servidores
-- plataformas de orquestación: kubernetes
-
-## Ventajas
-
-- Manejo de infraestructura
-
-- Automatización de cambios.
-
-- Estandarizar configuraciones.
-
-- Colaboración entre diferentes personas que estén manipulando nuestra infraestructura.
-
 ## Terraform Workflow
 
 **Write:** Defines los recursos a utilizar mediante archivos de configuración.
@@ -36,10 +19,6 @@ Servicios y plataformas
 **Apply:** Terraform prueba y enlista la infraestructura que configuraste, y actualiza los estados de los archivos.
 
 ![alt](images/providers.png)
-
-## IAM
-
-práctica de seguridad que controla el acceso a los recursos de infraestructura mediante la asignación de roles y permisos a usuarios
 
 ----
 
@@ -230,7 +209,7 @@ El uso de modulos es un forma de extender la configuración actual de Terraform 
     2.1. Se requere multiples pasos par provisionar la infraestructura.
     2.2. Repetición de código.
 
-### Estructur de workspaces
+### Estructura de workspaces
 
 1. Reduce duplicación de código
 

@@ -17,11 +17,17 @@ Servicios y plataformas
 
 - Colaboración entre diferentes personas que estén manipulando nuestra infraestructura.
 
-## P
+## Principios de IaC
 
 ### 1. Reproductibilidad
 
-## 2. a
+### 2. Idempotencia
+
+### 3. Composabilidad
+
+### 4. Evolvabilidad
+
+## Configuración drift
 
 ## IAM
 
