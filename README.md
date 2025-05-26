@@ -1,5 +1,3 @@
-# Apuntes v0.1
+# Apuntes
 
-Este repositorio está pensado para colocar información sobre mi avance en estudiar cómo crear scripts en Python y C#, para no olvidarme de varios conceptos, y poder mejorar mi aprendizaje.
-
-Indice:
+Este repositorio está pensado para colocar información sobre mi avance estudiando Python y C#, para no olvidarme de varios conceptos, y poder mejorar mi aprendizaje.

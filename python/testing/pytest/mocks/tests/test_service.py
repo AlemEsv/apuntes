@@ -1,4 +1,4 @@
-# MOCKS: TESTEAN SERVICIOS
+# MOCKS: TESTING DE SERVICIOS
 
 import pytest
 import src.service as service
