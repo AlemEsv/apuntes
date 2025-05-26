@@ -1,4 +1,4 @@
 
-access_key    = "AKIAUKXBUA3WE4P7KHUA"
-secret_key    = "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"
+access_key    = "NO"
+secret_key    = "OLA"
 service_names = ["service1", "service2", "service3"]

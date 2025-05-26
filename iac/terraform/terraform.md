@@ -4,7 +4,14 @@ Terraform es un herramienta que permite crear infraestructura como código.
 
 ![alt](images/terraform.png)
 
-Terraform se interpondrá entre nosotros y la API del proveedor de nube (aws, azure, google cloud, etc) o de manera local, utilizando **terraform providers**.
+Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, azure, google cloud, etc)_ o de manera local, utilizando **terraform providers**.
+
+## Infraestructura
+
+Servicios y plataformas
+
+- servidores
+- plataformas de orquestación: kubernetes
 
 ## Ventajas
 
@@ -32,7 +39,19 @@ Terraform se interpondrá entre nosotros y la API del proveedor de nube (aws, az
 
 ## IAM
 
+práctica de seguridad que controla el acceso a los recursos de infraestructura mediante la asignación de roles y permisos a usuarios
+
 ----
+
+## Estructuras
+
+### Null_resources
+
+### Triggers
+
+### Resources
+
+### Data
 
 ## Comandos de Terraform
 
@@ -115,7 +134,7 @@ La creación de variables tendrá el siguiente template:
 variable "nombre"
 {
   description = "descripcion de ejemplo"
-  type        = # string, int, etc
+  type        = # string, number, etc...
   sensitive   = true or false # no se muestra en consola
   default     = "example" # valor por defecto al ejecutar la variable
 }
@@ -132,13 +151,13 @@ example = var.example
 # dentro de mi main.tf...
 locals # variables que solo se pueden ejecutar de forma local
 {
-    tag = "saludo"
+    saludo = "hola a todos!"
 }
 resource "instance" "name"
 {
     tags = 
     {
-        hola = local.tag # variable local
+        hola = local.saludo # variable local
     }
 }
 ```
