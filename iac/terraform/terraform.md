@@ -22,6 +22,14 @@ Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, a
 
 ----
 
+## Sintaxis
+
+```python
+<Tipo-bloque> "<etiqueta>" "<nombre>"{
+    #cuerpo del bloque
+}
+```
+
 ## Estructuras
 
 ### Resources
@@ -79,14 +87,6 @@ Ejemplos:
 
 - Obtener el ID de una imagen.
 - Obtener una VPC ya creada.
-
-## Sintaxis
-
-```python
-<Tipo-bloque> "<etiqueta>" "<nombre>"{
-    #cuerpo del bloque
-}
-```
 
 ## Comandos de Terraform
 
@@ -239,9 +239,42 @@ terraform apply -var-file
 
 colección de archivos de configuración estándar en un directorio dedicado.
 
-El uso de modulos es un forma de extender la configuración actual de Terraform con partes existentes de código reutilizable.
-
 **Observación:** permite añadir varios archivos de configuración utilizando solo uno
+
+### Estructura básica
+
+```yaml
+proyecto/
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── modulos/
+│   └── maquina/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+
+```
+
+**¿Cómo usarlos?**
+
+```json
+# main.tf (fuera del módulo)
+module "saludo" {
+  source = "./modulos/mensaje"
+  texto  = "Hola desde el módulo de null_resource"
+}
+
+output "mensaje_final" {
+  value = module.saludo.mensaje_mostrado
+}
+
+```
+
+#### Observación
+
+Las variables dentro de un módulo son privadas a ese módulo.
+El módulo principal (root) debe pasar explícitamente los valores que el submódulo necesita.
 
 ### Modulos conocidos
 
