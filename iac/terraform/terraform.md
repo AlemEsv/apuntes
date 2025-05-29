@@ -24,13 +24,69 @@ Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, a
 
 ## Estructuras
 
-### Null_resources
-
-### Triggers
-
 ### Resources
 
+Objeto de infraestructura que quieres crear, cambiar o eliminar.
+Es el objetivo principal de terraform, todo gira entorno a esto.
+
+Ejemplos:
+
+- Una base de datos
+- Una red.
+- Una maquina virtual en AWS o Azure.
+
+#### Null_resources
+
+Recurso especial de terraform que no crea un recurso físico por si mismo, sino que es utilizado para accionar comandos y/o scripts.
+
+1. **Triggers**
+
+    se usan con null_resource para forzar que algo se vuelva a ejecutar si algún valor cambia.
+
+    Ejemplo:
+
+    ```json
+    resource "null_resource" "script" {
+        triggers = {
+            always_run = timestamp()
+        }   
+    }
+    ```
+
+#### provisioner
+
+se usa para ejecutar acciones después de crear o destruir un recurso, como por ejemplo correr un script o comando en la máquina.
+
+1. **local_exec**
+
+    tipo de provisioner que ejecuta un comando en tu propia máquina local.
+
+    Ejemplo:
+
+    ```json
+    resource "null_resource" "ejemplo" {
+        provisioner "local-exec" {
+            command = "echo 'Recurso creado correctamente' > log.txt"
+        }
+    }
+    ```
+
 ### Data
+
+Un data es información que ya existe en la nube y que quieres consultar o usar, pero no crear.
+
+Ejemplos:
+
+- Obtener el ID de una imagen.
+- Obtener una VPC ya creada.
+
+## Sintaxis
+
+```python
+<Tipo-bloque> "<etiqueta>" "<nombre>"{
+    #cuerpo del bloque
+}
+```
 
 ## Comandos de Terraform
 
@@ -62,7 +118,7 @@ Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, a
 
 Inicializa el backend, crea 2 archivos de manera local.
 
-```bash
+```terraform
 # Descarga información de proveedores y modulos
 carpeta: .terraform/providers/...
 
@@ -112,10 +168,10 @@ La creación de variables tendrá el siguiente template:
 ```bash
 variable "nombre"
 {
-  description = "descripcion de ejemplo"
-  type        = # string, number, etc...
-  sensitive   = true or false # no se muestra en consola
-  default     = "example" # valor por defecto al ejecutar la variable
+description = "descripcion de ejemplo"
+type        = # string, number, etc...
+sensitive   = true or false # no se muestra en consola
+default     = "example" # valor por defecto al ejecutar la variable
 }
 ```
 
@@ -132,10 +188,9 @@ locals # variables que solo se pueden ejecutar de forma local
 {
     saludo = "hola a todos!"
 }
-resource "instance" "name"
-{
-    tags = 
-    {
+
+resource "instance" "name" {
+    tags = {
         hola = local.saludo # variable local
     }
 }
@@ -162,7 +217,8 @@ variable{
 - sets
 
 ```bash
-variable{
+variable
+{
     type = set(number)
 }
 ```
@@ -195,14 +251,14 @@ El uso de modulos es un forma de extender la configuración actual de Terraform 
 
 ### Estructura separada
 
-1. Separación del Backend.
+1. **Separación del Backend.**
 
     Ventajas:
 
     1.1. Seguridad.
     1.2. Error humano reducido.
 
-2. El código representa el estado de la infraestructura.
+2. **El código representa el estado de la infraestructura.**
 
     Desventajas:
 
@@ -211,7 +267,7 @@ El uso de modulos es un forma de extender la configuración actual de Terraform 
 
 ### Estructura de workspaces
 
-1. Reduce duplicación de código
+1. **Reduce duplicación de código**
 
     Desventajas:
 
@@ -219,7 +275,7 @@ El uso de modulos es un forma de extender la configuración actual de Terraform 
     1.2. Estado guardado en el backend.
     1.3. El código no muestra el estado de la infraestructura.
 
-2. Comandos
+2. **Comandos**
 
 ```bash
     # enlista todos los workspaces
@@ -232,6 +288,4 @@ El uso de modulos es un forma de extender la configuración actual de Terraform 
 
     terraform workspace select <nombre>
     # cambia de workspace
-
-
 ```
