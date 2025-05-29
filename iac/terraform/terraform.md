@@ -198,7 +198,12 @@ resource "instance" "name" {
 
 ### Collection types
 
-- lists
+#### Listas
+
+- ✅ Ordenado
+- ✅ Permite duplicados
+- ✅ Acceso por índice
+- ❌ No tiene clave
 
 ```bash
 variable{
@@ -206,7 +211,25 @@ variable{
 }
 ```
 
-- maps
+**ejemplo:**
+
+```python
+# terraform.tfvars
+nombres = ["Ana", "Luis", "Carlos"]
+
+# outputs.tf
+output "primer_nombre" {
+  value = var.nombres[0]  # "Ana"
+}
+
+```
+
+#### maps
+
+- ❌ Ordenado
+- ✅ Permite duplicados
+- ❌ Acceso por índice
+- ✅ Tiene clave
 
 ```bash
 variable{
@@ -214,7 +237,28 @@ variable{
 }
 ```
 
-- sets
+**ejemplo:**
+
+```python
+# terraform.tfvars
+colores = {
+  fondo  = "azul"
+  texto  = "blanco"
+  borde  = "gris"
+}
+
+# outputs.tf
+output "color_de_texto" {
+  value = var.colores["texto"]  # "blanco"
+}
+```
+
+#### Sets
+
+- ❌ Ordenado
+- ❌ Permite duplicados
+- ❌ Acceso por índice
+- ❌ Tiene clave
 
 ```bash
 variable
@@ -222,6 +266,19 @@ variable
     type = set(number)
 }
 ```
+
+**ejemplo:**
+
+```python
+# terraform.tfvars
+puertos = [22, 80, 443, 443]  # El valor 443 se ignora una vez
+
+# outputs.tf
+output "puertos_lista" {
+  value = [for p in var.puertos : p]
+}
+```
+
 
 - **Nota**:
 si la variable tiene **TF_VAR_** name, este tomará automaticmente el nombre y el valor de la variable.
