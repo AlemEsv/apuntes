@@ -21,11 +21,19 @@ Servicios y plataformas
 
 ### 1. Reproductibilidad
 
+Un archivo de IaC debe permitir recrear un entorno idéntico cada vez que se aplique.
+
 ### 2. Idempotencia
+
+Aplicar varias veces el mismo código no debe cambiar el estado si ya está en el resultado deseado.
 
 ### 3. Composabilidad
 
+Definir módulos o bloques reutilizables que puedan combinarse para construir infraestructuras complejas.
+
 ### 4. Evolvabilidad
+
+Facilitar la extensión y adaptación de la configuración a medida que cambian los requisitos.
 
 ## Configuración drift
 

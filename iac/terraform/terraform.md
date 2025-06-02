@@ -32,6 +32,30 @@ Terraform se interpondrá entre nosotros y la API del proveedor de nube _(aws, a
 
 ## Estructuras
 
+## Comandos de Terraform
+
+1. [Terraform init](#terraform-init)
+
+2. [Terraform fmt](#terraform-fmt)
+
+3. [Terraform plan](#terraform-plan)
+
+4. [Terraform apply](#terraform-apply)
+
+5. [Terraform destroy](#terraform-destroy)
+
+6. [Terraform.tfvars](#terraformtfvars)
+
+## Comandos de Variables
+
+1. [Asignación](#asignación-de-variables)
+
+2. [Tipos de colecciones](#collection-types)
+
+3. [Flags](#flags)
+
+----
+
 ### Resources
 
 Objeto de infraestructura que quieres crear, cambiar o eliminar.
@@ -87,29 +111,6 @@ Ejemplos:
 
 - Obtener el ID de una imagen.
 - Obtener una VPC ya creada.
-
-## Comandos de Terraform
-
-1. [Terraform init](#terraform-init)
-
-2. [Terraform fmt](#terraform-fmt)
-
-3. [Terraform plan](#terraform-plan)
-
-4. [Terraform apply](#terraform-apply)
-
-5. [Terraform destroy](#terraform-destroy)
-
-6. [Terraform.tfvars](#terraformtfvars)
-
-## Comandos de Variables
-
-1. [Asignación](#asignación-de-variables)
-
-2. [Tipos de colecciones](#collection-types)
-
-3. [Flags](#flags)
-
 ----
 
 ## Comandos
@@ -278,7 +279,6 @@ output "puertos_lista" {
   value = [for p in var.puertos : p]
 }
 ```
-
 
 - **Nota**:
 si la variable tiene **TF_VAR_** name, este tomará automaticmente el nombre y el valor de la variable.
