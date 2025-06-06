@@ -111,6 +111,7 @@ Ejemplos:
 
 - Obtener el ID de una imagen.
 - Obtener una VPC ya creada.
+
 ----
 
 ## Comandos
