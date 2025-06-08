@@ -1,8 +1,8 @@
 # Reglas generales para los commits
 
-1. **Atómicos y coherentes**: Cada commit debe agrupar cambios relacionados (por ejemplo, "crear estructura inicial de carpetas y archivos", "añadir script de validación de variables Terraform", "documentar módulo X con README").
+1. **Atómicos y coherentes**: Cada commit debe agrupar cambios relacionados.
 2. **Tamaño moderado**: Idealmente, ningún commit debería superar las 200-300 líneas de cambio (sumando adiciones y eliminaciones).
-3. **Mensajes descriptivos**: Usar un formato claro, por ejemplo:
+3. **Mensajes descriptivos**: Usar un formato claro.
 
    ```yaml
    feat(tf-module): agregar variables iniciales en network-module
@@ -17,13 +17,13 @@
 
 ### Sprint 1
 
-En este primer sprint se definen la estructura general del proyecto, carpetas base, scripts de arranque y un pequeño "mínimo viable" (MVP). Se recomienda entre **5 y 7 commits**. Por ejemplo:
+Se recomienda entre **5 y 7 commits**. Por ejemplo:
 
 1. **Commit 1** (estructura inicial):
 
    * Crear repositorio y carpeta raíz.
-   * Añadir directorios base (`iac/`, `scripts/`, `src/`, `tests/`, `docs/`, etc.).
-   * Archivos vacíos `main.tf`, `validate.sh`, `conftest.py`, `README.md` con esqueleto.
+   * Añadir directorios base (`src/`, `tests/`, `docs/`, etc.).
+   * Archivos vacíos con esqueleto.
 
 2. **Commit 2** (configuración Git hooks):
 
@@ -33,7 +33,6 @@ En este primer sprint se definen la estructura general del proyecto, carpetas ba
 3. **Commit 3** (Módulo Terraform mínimo):
 
    * Implementar un `network-module/main.tf` con un `null_resource`.
-   * Añadir `variables.tf` con dos variables dummy.
 
 4. **Commit 4** (Script de validación básica):
 
@@ -59,7 +58,7 @@ Si alguno de esos pasos reúne demasiado código (por ejemplo, un módulo Terraf
 
 ### Sprint 2
 
-En este sprint se extiende la funcionalidad (módulos adicionales, tests de integración, scripts avanzados, dashboards, etc.). Se recomiendan entre **7 y 10 commits**, desglosados así:
+Se recomiendan entre **7 y 10 commits**, desglosados así:
 
 1. **Commit 1 (feature)**:
 
